@@ -1,7 +1,59 @@
-import java.util.Arrays;
-/* Создать внутри класса с методом main поле типа Employee[10],
-    которое будет выполнять роль «хранилища» для записей о сотрудниках.*/
 public class Main {
+    /* 7. Создать внутри класса с методом main поле типа Employee[10],
+    которое будет выполнять роль «хранилища» для записей о сотрудниках.
+       8. Создать статические методы, которые будут взаимодействовать с массивом и предоставлять результат:
+
+        a. Получить список всех сотрудников со всеми имеющимися по ним данными (вывести в консоль значения всех полей (toString)).*/
+    public static void printEmployeeList (Employee [] employees) {
+        for (Employee employee: employees) {
+            System.out.println(employee);
+        }
+    }
+    /* b. Посчитать сумму затрат на зарплаты в месяц. */
+    public static int calculateSpendingPerMonth(Employee[] employees) {
+        int sum = 0;
+        for (Employee employee : employees) {
+            sum += employee.getSalary();
+        }
+        return sum;
+    }
+    /* c. Найти сотрудника с минимальной зарплатой.*/
+    public static Employee findMinSalary (Employee [] employees) {
+        Employee output = employees [0];
+        int minSalary = output.getSalary();
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary) {
+                minSalary = employee.getSalary();
+                output = employee;
+            }
+        }
+        return output;
+    }
+    /* d. Найти сотрудника с максимальной зарплатой.*/
+    public static Employee findMaxSalary (Employee [] employees) {
+        Employee output = employees [0];
+        int maxSalary = output.getSalary();
+        for (Employee employee: employees) {
+            if (employee.getSalary() > maxSalary) {
+                maxSalary = employee.getSalary();
+                output = employee;
+            }
+        }
+        return output;
+    }
+    /* e. Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b).*/
+    public static double calculateAverageSalary (Employee [] employees) {
+        return calculateSpendingPerMonth(employees) / employees.length;
+    }
+    /* 6. Получить Ф. И. О. всех сотрудников (вывести в консоль). */
+    public static void printNames (Employee [] employees) {
+        for (Employee employee: employees) {
+            System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getPatronymic());
+        }
+    }
+    public static void printSpace() {
+        System.out.println(" ");
+    }
     public static void main(String[] args) {
 
         Employee[] employees = new Employee[10];
@@ -17,26 +69,16 @@ public class Main {
         employees[8] = new Employee("Мишустин", "Михаил", "Владимирович", 5, 40_000);
         employees[9] = new Employee("Собянин", "Сергей", "Семенович", 5, 40_000);
 
-        System.out.println("Ф.И.О.: " + employees[0].getSurname() + " " + employees[0].getName() + " " + employees[0].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[0].getDepartment()) + " " + "Оклад: " + employees[0].getSalary() + " " + "id = " + employees[0].getId());
-        System.out.println("Ф.И.О.: " + employees[1].getSurname() + " " + employees[1].getName() + " " + employees[1].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[1].getDepartment()) + " " + "Оклад: " + employees[1].getSalary() + " " + "id = " + employees[1].getId());
-        System.out.println("Ф.И.О.: " + employees[2].getSurname() + " " + employees[2].getName() + " " + employees[2].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[2].getDepartment()) + " " + "Оклад: " + employees[2].getSalary() + " " + "id = " + employees[2].getId());
-        System.out.println("Ф.И.О.: " + employees[3].getSurname() + " " + employees[3].getName() + " " + employees[3].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[3].getDepartment()) + " " + "Оклад: " + employees[3].getSalary() + " " + "id = " + employees[3].getId());
-        System.out.println("Ф.И.О.: " + employees[4].getSurname() + " " + employees[4].getName() + " " + employees[4].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[4].getDepartment()) + " " + "Оклад: " + employees[4].getSalary() + " " + "id = " + employees[4].getId());
-        System.out.println("Ф.И.О.: " + employees[5].getSurname() + " " + employees[5].getName() + " " + employees[5].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[5].getDepartment()) + " " + "Оклад: " + employees[5].getSalary() + " " + "id = " + employees[5].getId());
-        System.out.println("Ф.И.О.: " + employees[6].getSurname() + " " + employees[6].getName() + " " + employees[6].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[6].getDepartment()) + " " + "Оклад: " + employees[6].getSalary() + " " + "id = " + employees[6].getId());
-        System.out.println("Ф.И.О.: " + employees[7].getSurname() + " " + employees[7].getName() + " " + employees[7].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[7].getDepartment()) + " " + "Оклад: " + employees[7].getSalary() + " " + "id = " + employees[7].getId());
-        System.out.println("Ф.И.О.: " + employees[8].getSurname() + " " + employees[8].getName() + " " + employees[8].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[8].getDepartment()) + " " + "Оклад: " + employees[8].getSalary() + " " + "id = " + employees[8].getId());
-        System.out.println("Ф.И.О.: " + employees[9].getSurname() + " " + employees[9].getName() + " " + employees[9].getPatronymic() + " " + "Отдел: = " + Arrays.toString(employees[9].getDepartment()) + " " + "Оклад: " + employees[9].getSalary() + " " + "id = " + employees[9].getId());
+        printEmployeeList(employees);
+        printSpace();
+        System.out.println("Сумма затрат на зарплаты в месяц: " + calculateSpendingPerMonth(employees));
+        printSpace();
+        System.out.println("Сотрудник с минимальной зарплатой: " + findMinSalary(employees));
+        printSpace();
+        System.out.println("Сотрудник с максимальной зарплатой: " + findMaxSalary(employees));
+        printSpace();
+        System.out.println("Среднее значение зарплат: " + calculateAverageSalary(employees));
+        printSpace();
+        printNames(employees);
     }
-    public static int calculateSpendingPerMonth(Employee[] employees) {
-        int sum = 0;
-        for (Employee employee: employees) {
-            sum += employee.getSalary();
-        }
-        System.out.println(sum);
-        return sum;
-
-    }
-
-
 }
