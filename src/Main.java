@@ -4,8 +4,8 @@ public class Main {
        8. Создать статические методы, которые будут взаимодействовать с массивом и предоставлять результат:
 
         a. Получить список всех сотрудников со всеми имеющимися по ним данными (вывести в консоль значения всех полей (toString)).*/
-    public static void printEmployeeList (Employee [] employees) {
-        for (Employee employee: employees) {
+    public static void printEmployeeList(Employee[] employees) {
+        for (Employee employee : employees) {
             System.out.println(employee);
         }
     }
@@ -43,7 +43,7 @@ public class Main {
     }
     /* e. Подсчитать среднее значение зарплат (можно использовать для этого метод из пункта b).*/
     public static double calculateAverageSalary (Employee [] employees) {
-        return calculateSpendingPerMonth(employees) / employees.length;
+        return calculateSpendingPerMonth(employees) / Employee.getCounter();
     }
     /* 6. Получить Ф. И. О. всех сотрудников (вывести в консоль). */
     public static void printNames (Employee [] employees) {
@@ -54,6 +54,7 @@ public class Main {
     public static void printSpace() {
         System.out.println(" ");
     }
+
     public static void main(String[] args) {
 
         Employee[] employees = new Employee[10];
@@ -80,5 +81,6 @@ public class Main {
         System.out.println("Среднее значение зарплат: " + calculateAverageSalary(employees));
         printSpace();
         printNames(employees);
+        printSpace();
     }
 }
